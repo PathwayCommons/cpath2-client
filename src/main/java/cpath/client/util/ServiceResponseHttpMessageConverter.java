@@ -1,7 +1,6 @@
 package cpath.client.util;
 
-import cpath.service.jaxb.*;
-
+import cpath.client.query.*;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.MediaType;
@@ -18,10 +17,10 @@ import java.util.List;
 import javax.xml.transform.stream.StreamSource;
 
 /**
- * Converts the REST response into a {@link ServiceResponse} subclass. 
+ * Converts the REST response into a {@link ServiceResponse} subclass.
  */
 public class ServiceResponseHttpMessageConverter 
-	implements HttpMessageConverter<ServiceResponse> 
+	implements HttpMessageConverter<ServiceResponse>
 {
     private static final List<MediaType> mediaList;
     private static final Jaxb2Marshaller jaxb;

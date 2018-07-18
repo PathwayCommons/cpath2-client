@@ -1,10 +1,6 @@
-/**
- * 
- */
-package cpath.query;
+package cpath.client.query;
 
 import cpath.client.util.CPathException;
-import cpath.service.OutputFormat;
 
 /**
  * Basic interface to develop specific 

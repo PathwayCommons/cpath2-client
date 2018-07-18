@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
+import cpath.client.query.*;
 import org.biopax.paxtools.io.SimpleIOHandler;
 import org.biopax.paxtools.model.Model;
 import org.biopax.paxtools.model.level3.Pathway;
@@ -12,12 +13,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import cpath.client.util.CPathException;
-import cpath.service.GraphType;
-import cpath.service.OutputFormat;
-import cpath.service.jaxb.SearchResponse;
-import cpath.service.jaxb.ServiceResponse;
-import cpath.service.jaxb.TraverseEntry;
-import cpath.service.jaxb.TraverseResponse;
 import org.springframework.http.MediaType;
 
 /**

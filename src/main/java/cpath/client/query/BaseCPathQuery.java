@@ -1,4 +1,4 @@
-package cpath.query;
+package cpath.client.query;
 
 
 import org.springframework.util.MultiValueMap;

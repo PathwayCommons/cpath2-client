@@ -1,4 +1,4 @@
-package cpath.query;
+package cpath.client.query;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -12,10 +12,6 @@ import org.springframework.util.MultiValueMap;
 import cpath.client.CPathClient;
 import cpath.client.CPathClient.Direction;
 import cpath.client.util.CPathException;
-import cpath.service.Cmd;
-import cpath.service.CmdArgs;
-import cpath.service.GraphType;
-import cpath.service.OutputFormat;
 
 /**
  * A query to be executed with {@link CPathClient}

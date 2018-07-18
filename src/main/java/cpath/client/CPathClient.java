@@ -3,13 +3,7 @@ package cpath.client;
 import cpath.client.util.BioPAXHttpMessageConverter;
 import cpath.client.util.CPathException;
 import cpath.client.util.ServiceResponseHttpMessageConverter;
-import cpath.query.CPathGetQuery;
-import cpath.query.CPathGraphQuery;
-import cpath.query.CPathSearchQuery;
-import cpath.query.CPathTopPathwaysQuery;
-import cpath.query.CPathTraverseQuery;
-import cpath.service.CmdArgs;
-import cpath.service.jaxb.*;
+import cpath.client.query.*;
 
 import org.apache.commons.lang3.StringUtils;
 import org.biopax.paxtools.io.SimpleIOHandler;

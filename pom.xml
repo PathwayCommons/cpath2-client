@@ -2,36 +2,64 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<artifactId>parent</artifactId>
-		<groupId>pathwaycommons.cpath</groupId>
-		<version>8.0.0-SNAPSHOT</version>
-	</parent>
-
+	<groupId>pathwaycommons.cpath</groupId>
 	<artifactId>cpath-client</artifactId>
+	<version>10.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>cPath2 - Client</name>
-	<description>Client library for cPath/cPath2 web services</description>
-	<url>https://pathwaycommons.github.io/cpath2</url>
+	<name>cpath2 client</name>
+	<description>A convenient Java library to work with Pathway Commons web services</description>
+	<url>https://pathwaycommons.github.io/cpath2-client</url>
+
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/PathwayCommons/cpath2-client/issues</url>
+	</issueManagement>
+
+	<ciManagement>
+		<system>Travis CI</system>
+		<url>https://travis-ci.org/PathwayCommons/cpath2-client</url>
+	</ciManagement>
+
+	<organization>
+		<name>Pathway Commons</name>
+		<url>http://www.pathwaycommons.org</url>
+	</organization>
+
+	<scm>
+		<connection>scm:git:git://github.com/PathwayCommons/cpath2-client.git</connection>
+		<developerConnection>scm:git:git@github.com:PathwayCommons/cpath2-client.git</developerConnection>
+		<url>https://github.com/PathwayCommons/cpath2-client/tree/master/</url>
+	</scm>
+
+	<licenses>
+		<license>
+			<name>MIT license</name>
+			<url>https://raw.githubusercontent.com/PathwayCommons/cpath2-client/master/LICENSE</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<spring.version>5.0.7.RELEASE</spring.version>
+		<paxtools.version>5.1.0-SNAPSHOT</paxtools.version>
+		<junit.version>4.12</junit.version>
+		<jackson.version>2.8.9</jackson.version>
+	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.biopax.paxtools</groupId>
 			<artifactId>paxtools-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.biopax.paxtools</groupId>
-			<artifactId>paxtools-trove</artifactId>
-		</dependency>		
-		<dependency>
-			<groupId>pathwaycommons.cpath</groupId>
-			<artifactId>cpath-api</artifactId>
-			<version>${project.version}</version>
+			<version>${paxtools.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>commons-logging</groupId>
@@ -42,25 +70,28 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-oxm</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -92,5 +123,26 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<repositories>
+		<repository>
+			<id>ossrh</id>
+			<name>OSSRH Repository</name>
+			<url>https://oss.sonatype.org/content/groups/public/</url>
+		</repository>
+	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>ossrh</id>
+			<name>Nexus Release Repository</name>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 </project>

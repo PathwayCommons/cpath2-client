@@ -1,4 +1,4 @@
-package cpath.query;
+package cpath.client.query;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -10,10 +10,6 @@ import org.springframework.util.MultiValueMap;
 
 import cpath.client.CPathClient;
 import cpath.client.util.CPathException;
-import cpath.service.Cmd;
-import cpath.service.CmdArgs;
-import cpath.service.OutputFormat;
-import cpath.service.jaxb.TraverseResponse;
 
 /**
  * A property 'traverse' query 
