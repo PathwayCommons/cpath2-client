@@ -2,13 +2,9 @@
 
 A convenient Java library to work with Pathway Commons web services.
 
-We've separated cpath-client module from the cpath2 multi-module Maven project into here (at 8.0.0-SNAPSHOT version) 
-and slightly refactored to make possible maintaining it separately from the server code.
+We've just cut the cpath-client module from the cpath2 multi-module Maven project, refatored and moved here to make possible maintaining it separately from the server code (cpath2).
 
-
-# Introduction #
-
-We develop a convenient (fluent query API, reasonable defaults) Java client for the [PC2 web services](http://www.pathwaycommons.org/pc2/) to use in other projects, such as in desktop Cytoscape apps, to quickly start exploring and querying the integrated PC BioPAX L3 database. Besides, we are not forcing anyone to use this client only; feel free to develop a simpler or more specific one.
+This ia a fluent API Java client library for using Pathway Commons' RESTful [web services](http://www.pathwaycommons.org/pc2/), our large integrated BioPAX L3 database, from other Java projects, such as Cytoscape desctop (apps). But feel free to use another tool or develop own web client for Pathway Commons if you wish.
 
 # Use #
 
