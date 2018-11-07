@@ -1,5 +1,8 @@
 # cpath2-client
 
+[![Build Status](https://travis-ci.org/PathwayCommons/cpath2.svg?branch=master)](https://travis-ci.org/PathwayCommons/cpath2-client)  
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c9722bf60f714e87a7137ff2f2586926)](https://www.codacy.com/app/IgorRodchenkov/cpath2-client?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=PathwayCommons/cpath2&amp;utm_campaign=Badge_Grade)
+
 A convenient Java library to work with Pathway Commons web services.
 
 We've just cut the cpath-client module from the cpath2 multi-module Maven project, refatored and moved here to make possible maintaining it separately from the server code (cpath2).
