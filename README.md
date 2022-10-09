@@ -1,6 +1,6 @@
 # cpath2-client
 
-[![Java CI with Maven](https://github.com/PathwayCommons/cpath2-client/actions/workflows/maven.yml/badge.svg)](https://github.com/PathwayCommons/cpath2-client/actions/workflows/build.yml)
+[![Build with Maven](https://github.com/PathwayCommons/cpath2-client/actions/workflows/build.yml/badge.svg)](https://github.com/PathwayCommons/cpath2-client/actions/workflows/build.yml)
 
 A convenient Java library to work with Pathway Commons web services.
 
