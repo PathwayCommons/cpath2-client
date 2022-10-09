@@ -30,12 +30,12 @@ in a Maven project, add to the pom.xml the following:
     <dependency>
       <groupId>pathwaycommons.cpath</groupId>
       <artifactId>cpath-client</artifactId>
-      <version>10.0.0-SNAPSHOT</version>
+      <version>10.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.biopax.paxtools</groupId>
       <artifactId>paxtools-core</artifactId>
-      <version>5.1.0-SNAPSHOT</version>
+      <version>5.3.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
 ```
