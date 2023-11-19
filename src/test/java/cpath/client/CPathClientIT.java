@@ -15,22 +15,18 @@ import java.io.FileOutputStream;
 import static org.junit.Assert.*;
 
 /**
- * INFO: when "cPath2Url" Java property is not set,
- * (e.g., -DcPath2Url="http://localhost:8080/pc2/")
- * the default cpath2 endpoint URL is {@link CPathClient#DEFAULT_ENDPOINT_URL}
- * So, it is possible that the default (official) service still provides
- * an older cpath2 API than this PC2 client expects.
- * Take care.
+ * INFO: when "cPath2Url" Java property is not set (e.g., -DcPath2Url="http://localhost:8080/"),
+ * the default cpath2 endpoint URL is {@link CPathClient#DEFAULT_ENDPOINT_URL}.
+ * Run with JVM opts: --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
  */
 @Ignore //these tests depend on the data, thus disabled by default (not for daily builds)
-public class CPathClientTest {
+public class CPathClientIT {
 
   static CPathClient client;
 
   static {
-//		client = CPathClient.newInstance("http://www.pathwaycommons.org/pc2/");
-    client = CPathClient.newInstance("http://beta.pathwaycommons.org/pc2/");
-    client.setName("CPathClientTest");
+    client = CPathClient.newInstance(null); //use the URL from -DcPath2Url=<url> JVM option or the default PC2 URL
+    client.setName("CPathClientIT");
   }
 
   final String testBioSourceUri = "http://identifiers.org/taxonomy/9606";
@@ -40,7 +36,6 @@ public class CPathClientTest {
   @Test
   public final void testBiopaxMediaType() {
     String biopaxContentType = "application/vnd.biopax.rdf+xml";
-//		MimeTypeUtils.parseMimeType("application/vnd.biopax.rdf+xml");
     MediaType mediaType = MediaType.parseMediaType(biopaxContentType);
     assertNotNull(mediaType);
     assertEquals(biopaxContentType, mediaType.toString());
@@ -48,17 +43,14 @@ public class CPathClientTest {
 
   @Test
   public final void testConnectionEtc() throws CPathException {
-
     String endPointURL = client.getEndPointURL();
-    System.out.println("cpath2 instance: " + endPointURL
-      + " (actual location: " + client.getActualEndPointURL() + ")");
+    System.out.println("cpath2 instance: " + endPointURL + " (actual location: " + client.getActualEndPointURL() + ")");
 
     String res = client.post("help/types", null, String.class);
     assertTrue(res.contains("BioSource"));
     res = client.get("help/types", null, String.class);
     assertTrue(res.contains("BioSource"));
   }
-
 
   @Test
   public final void testGetTopPathways() throws CPathException {
@@ -71,12 +63,10 @@ public class CPathClientTest {
     result = null;
     try {
       result = client.createTopPathwaysQuery().datasourceFilter(new String[]{"foo"}).result();
-    } catch (CPathException e) {
-    }
-// since pc9 beta; it sends "empty" data result...
+    } catch (CPathException e) {}
+    // since pc9 beta; it sends "empty" data result...
     assertTrue(result == null || result.isEmpty());
   }
-
 
   @Test
   public final void testTraverse() {
@@ -104,7 +94,7 @@ public class CPathClientTest {
         .propertyPath("Named/name")
         .sources(new String[]{"bla-bla"})
         .result();
-      //it does not anymore sends error response; it returns "empty" result
+      //it does not anymore send error response; it returns "empty" result
       // fail("must throw CPathException now, for all error responses: 460, 452, 500...");
     } catch (CPathException e) {
     }
@@ -133,7 +123,6 @@ public class CPathClientTest {
     assertNotNull(resp);
     assertFalse(resp.isEmpty());
   }
-
 
   @Test
   public final void testSearch() {
@@ -165,7 +154,6 @@ public class CPathClientTest {
     assertFalse(((SearchResponse) resp).getSearchHit().isEmpty());
   }
 
-
   @Test //this test is even more dependent on the data there
   public final void testGetByUri() throws CPathException {
     String id = "BRCA2";
@@ -189,7 +177,6 @@ public class CPathClientTest {
     assertTrue(res.contains("<sbgn"));
   }
 
-
   //@Ignore
   @Test
   public final void testPathsBetweenQuery() throws CPathException {
@@ -200,7 +187,6 @@ public class CPathClientTest {
       .result();
 
     System.out.println("model.getObjects(.size()) = " + model.getObjects().size());
-
     SimpleIOHandler h = new SimpleIOHandler();
 
     try {
@@ -209,7 +195,6 @@ public class CPathClientTest {
       e.printStackTrace();
     }
   }
-
 
   @Test //this test id data-dependent
   public final void testGetPathwayByUri() throws CPathException {

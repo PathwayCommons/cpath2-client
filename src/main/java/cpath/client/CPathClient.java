@@ -32,7 +32,7 @@ public class CPathClient
 	
 	// one can set the JVM property: -DcPath2Url="http://some_URL"
 	public static final String JVM_PROPERTY_ENDPOINT_URL = "cPath2Url";	
-	public static final String DEFAULT_ENDPOINT_URL = "http://www.pathwaycommons.org/pc2/";
+	public static final String DEFAULT_ENDPOINT_URL = "https://www.pathwaycommons.org/pc2/";
 
 	private RestTemplate restTemplate;
 	private String endPointURL; //official external public cpath2 web service url
@@ -63,19 +63,19 @@ public class CPathClient
      */
     public static CPathClient newInstance(String url) {
     	CPathClient client = new CPathClient();
-		// create a new REST template
-		client.restTemplate = new RestTemplate();
+			// create a new REST template
+			client.restTemplate = new RestTemplate();
      	// add custom cPath2 XML message converter as the first one (accepts 'application/xml' content type)
     	// because one of existing/default msg converters, XML root element based jaxb2, does not work for ServiceResponce types...
     	client.restTemplate.getMessageConverters().add(0, new ServiceResponseHttpMessageConverter());
     	// add BioPAX http message converter
-		// (SimpleIOHandler is not thread-safe; so we cannot share the thread-safe restTemplate)
-        client.restTemplate.getMessageConverters().add(1, new BioPAXHttpMessageConverter(new SimpleIOHandler()));
-        // set the cpath2 server URL (or default one or from the java option)
+		  // (SimpleIOHandler is not thread-safe; so we cannot share the thread-safe restTemplate)
+      client.restTemplate.getMessageConverters().add(1, new BioPAXHttpMessageConverter(new SimpleIOHandler()));
+      // set the cpath2 server URL (or default one or from the java option)
     	if(url == null || url.isEmpty())
-			client.endPointURL = System.getProperty(JVM_PROPERTY_ENDPOINT_URL, DEFAULT_ENDPOINT_URL);
-		else
-			client.endPointURL = url;
+				client.endPointURL = System.getProperty(JVM_PROPERTY_ENDPOINT_URL, DEFAULT_ENDPOINT_URL);
+		  else
+				client.endPointURL = url;
 
     	return client;
     }
@@ -101,11 +101,6 @@ public class CPathClient
 		
 		try {
 			return restTemplate.postForObject(url, requestParams, responseType);
-//		} catch (UnknownHttpStatusCodeException e) {
-//			if (e.getRawStatusCode() == 460) {
-//				return null; //empty result
-//			} else
-//				throw new CPathException(url + " and " + requestParams, e);
 		} catch (RestClientException e) {
 			throw new CPathException(url + " and " + requestParams, e);
 		}
@@ -113,7 +108,7 @@ public class CPathClient
     
 	
 	/**
-	 * Sends a HTTP GET request to the cpath2 server.
+	 * Sends an HTTP GET request to the cPath2 server.
 	 * 
 	 * Note: using {@link #post(String, MultiValueMap, Class)} is the preferred
 	 * and more reliable method, especially with complex queries that use URIs or

@@ -4,11 +4,11 @@
 
 A convenient Java library to work with Pathway Commons web services.
 
-We've just cut the cpath-client module from the cpath2 multi-module Maven project, refatored and moved here to make possible maintaining it separately from the server code (cpath2).
+We've just cut the cpath-client module from the cpath2 multimodule Maven project, refatored and moved here to make possible maintaining it separately from the server code (cpath2).
 
-This ia a fluent API Java client library for using Pathway Commons' RESTful [web services](http://www.pathwaycommons.org/pc2/), our large integrated BioPAX L3 database, from other Java projects, such as Cytoscape desctop (apps). But feel free to use another tool or develop own web client for Pathway Commons if you wish.
+This ia a fluent API Java client library for using Pathway Commons' RESTful [web services](https://www.pathwaycommons.org/pc2/), our large integrated BioPAX L3 database, from other Java projects, such as Cytoscape desctop (apps). But feel free to use another tool or develop own web client for Pathway Commons if you wish.
 
-# Use #
+## Use
 
 ```
 //using the Pathway Commons cPath2 web service URL (default):
@@ -19,33 +19,32 @@ CPathClient client = CPathClient.newInstance();
 in a Maven project, add to the pom.xml the following:
 
 ```
-  <repositories>
-	  <repository>
-		  <id>ossrh</id>
-		  <name>OSSRH Repository</name>
-		  <url>https://oss.sonatype.org/content/groups/public/</url>
-	  </repository>
-  </repositories>
-  <dependencies>
+<repositories>
+    <repository>
+        <id>ossrh</id>
+        <name>OSSRH Repository</name>
+        <url>https://oss.sonatype.org/content/groups/public/</url>
+    </repository>
+</repositories>
+<dependencies>
     <dependency>
-      <groupId>pathwaycommons.cpath</groupId>
-      <artifactId>cpath-client</artifactId>
-      <version>10.0.1-SNAPSHOT</version>
+        <groupId>pathwaycommons.cpath</groupId>
+        <artifactId>cpath-client</artifactId>
+        <version>10.1.0-SNAPSHOT</version>
     </dependency>
     <dependency>
-      <groupId>org.biopax.paxtools</groupId>
-      <artifactId>paxtools-core</artifactId>
-      <version>5.3.0-SNAPSHOT</version>
+        <groupId>org.biopax.paxtools</groupId>
+        <artifactId>paxtools-core</artifactId>
+        <version>5.3.0</version>
     </dependency>
-  </dependencies>
+</dependencies>
 ```
 
-See also:
-* the project's [tests](https://github.com/PathwayCommons/cpath2-client/blob/master/src/test/java/cpath/client/CPathClientTest.java) can be used as example;
+## See also:
+* http://www.biopax.org/paxtools
+* [tests](https://github.com/PathwayCommons/cpath2-client/blob/master/src/test/java/cpath/client/CPathClientIT.java) as an example;
   
-Alternatively, one can add the cpath-client _fat_ jar with dependencies to a Java (or JPype) project: grab the latest fat-jar ([from here](https://oss.sonatype.org/content/groups/public/pathwaycommons/cpath/cpath-client/)).
+One can add the cpath-client _fat_ jar with dependencies to a Java (or JPype) project: grab the latest fat-jar ([from here](https://oss.sonatype.org/content/groups/public/pathwaycommons/cpath/cpath-client/)).
 
-
-# See also #
-  * http://www.biopax.org/paxtools
-  
+## ToDo: 
+* Implement cPath2 v14 APIv2 (coming soon) client methods (only HTTP POST and JSON request body are used in the v2 API)

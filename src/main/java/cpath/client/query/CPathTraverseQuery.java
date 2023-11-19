@@ -27,7 +27,7 @@ public final class CPathTraverseQuery extends BaseCPathQuery<TraverseResponse> i
 	 * @return the request
 	 */
 	protected MultiValueMap<String, String> getRequestParams() {
-		MultiValueMap<String, String> request = new LinkedMultiValueMap<String, String>();
+		MultiValueMap<String, String> request = new LinkedMultiValueMap<>();
 		if(source == null || source.length == 0)
 			throw new IllegalArgumentException("Required 'source' (URIs) parameter cannot be null or empty.");
 		request.put(CmdArgs.uri.name(), Arrays.asList(source));
