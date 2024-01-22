@@ -17,6 +17,8 @@
 	</issueManagement>
 
 	<ciManagement>
+		<system>GitHub</system>
+		<url>https://github.com/PathwayCommons/cpath2-client/actions/workflows/build.yml</url>
 	</ciManagement>
 
 	<organization>
