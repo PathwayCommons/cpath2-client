@@ -2,13 +2,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>pathwaycommons.cpath</groupId>
-	<artifactId>cpath-client</artifactId>
-	<version>10.1.0-SNAPSHOT</version>
+	<groupId>pathwaycommons</groupId>
+	<artifactId>cpath2-client</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>cpath2 client</name>
-	<description>A convenient Java library to work with Pathway Commons web services</description>
+	<name>Pathway Commons Client</name>
+	<description>Java client for Pathway Commons pc2 web services</description>
 	<url>https://pathwaycommons.github.io/cpath2-client</url>
 
 	<issueManagement>
@@ -29,7 +29,8 @@
 	<scm>
 		<connection>scm:git:git://github.com/PathwayCommons/cpath2-client.git</connection>
 		<developerConnection>scm:git:git@github.com:PathwayCommons/cpath2-client.git</developerConnection>
-		<url>https://github.com/PathwayCommons/cpath2-client/tree/master/</url>
+		<url>https://github.com/PathwayCommons/cpath2-client/tree/master</url>
+		<tag>HEAD</tag>
 	</scm>
 
 	<licenses>
@@ -49,23 +50,17 @@
 		<dependency>
 			<groupId>org.biopax.paxtools</groupId>
 			<artifactId>paxtools-core</artifactId>
-			<version>5.3.0</version>
+			<version>6.0.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
-			<version>5.3.31</version>
-			<exclusions>
-				<exclusion>
-					<groupId>commons-logging</groupId>
-					<artifactId>commons-logging</artifactId>
-				</exclusion>
-			</exclusions>
+			<version>5.3.29</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-oxm</artifactId>
-			<version>5.3.31</version>
+			<version>5.3.29</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -73,16 +68,37 @@
 			<version>2.16.1</version>
 		</dependency>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.2</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-text</artifactId>
+			<version>1.11.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.14.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.3.9</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.10.2</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.4.12</version>
-			<scope>runtime</scope>
+			<version>1.4.14</version>
+			<scope>test</scope>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
@@ -99,7 +115,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.11.0</version>
 				<configuration>
-					<release>11</release>
+					<release>17</release>
 				</configuration>
 			</plugin>
 			<plugin>

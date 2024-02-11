@@ -5,22 +5,26 @@ import cpath.client.util.CPathException;
 import org.biopax.paxtools.io.SimpleIOHandler;
 import org.biopax.paxtools.model.Model;
 import org.biopax.paxtools.model.level3.Pathway;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * INFO: when "cPath2Url" Java property is not set (e.g., -DcPath2Url="http://localhost:8080/"),
  * the default cpath2 endpoint URL is {@link CPathClient#DEFAULT_ENDPOINT_URL}.
  * Run with JVM opts: --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
  */
-@Ignore //these tests depend on the data, thus disabled by default (not for daily builds)
+@Disabled //these tests depend on the data, thus disabled by default (not for daily builds)
 public class CPathClientIT {
+
+  Logger log = LoggerFactory.getLogger(CPathClientIT.class);
 
   static CPathClient client;
 
@@ -29,7 +33,7 @@ public class CPathClientIT {
     client.setName("CPathClientIT");
   }
 
-  final String testBioSourceUri = "http://identifiers.org/taxonomy/9606";
+  final String testBioSourceUri = "http://identifiers.org/taxonomy/9606"; //TODO: will be bioregistry.io based URI soon...
   final String testPathwayUri = "http://identifiers.org/reactome/R-HSA-201451";
 
 
@@ -44,8 +48,7 @@ public class CPathClientIT {
   @Test
   public final void testConnectionEtc() throws CPathException {
     String endPointURL = client.getEndPointURL();
-    System.out.println("cpath2 instance: " + endPointURL + " (actual location: " + client.getActualEndPointURL() + ")");
-
+    log.info("cpath2 instance: " + endPointURL);
     String res = client.post("help/types", null, String.class);
     assertTrue(res.contains("BioSource"));
     res = client.get("help/types", null, String.class);
@@ -54,8 +57,7 @@ public class CPathClientIT {
 
   @Test
   public final void testGetTopPathways() throws CPathException {
-    SearchResponse result = null;
-    result = client.createTopPathwaysQuery()
+    SearchResponse result = client.createTopPathwaysQuery()
       .queryString("*").datasourceFilter(new String[]{"reactome"}).result();
     assertNotNull(result);
     assertFalse(result.getSearchHit().isEmpty());
@@ -173,7 +175,7 @@ public class CPathClientIT {
       .sources(new String[]{"JUN", "PTEN"})
       .stringResult(OutputFormat.SBGN);
     assertNotNull(res);
-//		System.out.println(res);
+//    log.info(res);
     assertTrue(res.contains("<sbgn"));
   }
 

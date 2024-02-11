@@ -1,6 +1,6 @@
 package cpath.client.query;
 
-import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -124,22 +124,6 @@ public class SearchHit implements Serializable {
     }
     public void setExcerpt(String value) {
         this.excerpt = value;
-    }
-
-    /**
-     * For a BioPAX Interaction, Complex or Pathway,
-     * this is a number of associated sub-processes and participants;
-     * in other words - estimated size of the sub-network.
-     * 
-     * @return
-     * @deprecated use getNumParticipants, getNumProcesses instead (and the corresponding setters)
-     */
-    public Integer getSize() {
-        return size;
-    }
-    /** @deprecated use setNumParticipants, setNumProcesses instead (and the corresponding getters) */
-    public void setSize(Integer value) {
-        this.size = value;
     }
 
     /**

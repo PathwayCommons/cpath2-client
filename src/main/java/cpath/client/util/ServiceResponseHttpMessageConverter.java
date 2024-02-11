@@ -9,12 +9,11 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
+import javax.xml.transform.stream.StreamSource;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import javax.xml.transform.stream.StreamSource;
 
 /**
  * Converts the REST response into a {@link ServiceResponse} subclass.
@@ -26,7 +25,7 @@ public class ServiceResponseHttpMessageConverter
     private static final Jaxb2Marshaller jaxb;
     
     static {
-    	mediaList = new ArrayList<MediaType>();
+    	mediaList = new ArrayList<>();
         mediaList.add(MediaType.APPLICATION_XML);
         jaxb = new Jaxb2Marshaller();
         jaxb.setClassesToBeBound(Help.class,

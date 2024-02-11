@@ -28,7 +28,7 @@ import java.util.Map.Entry;
  */
 public class CPathClient
 {
-	private static final Logger LOGGER = LoggerFactory.getLogger(CPathClient.class);
+	private static final Logger log = LoggerFactory.getLogger(CPathClient.class);
 	
 	// one can set the JVM property: -DcPath2Url="http://some_URL"
 	public static final String JVM_PROPERTY_ENDPOINT_URL = "cPath2Url";	
@@ -38,7 +38,7 @@ public class CPathClient
 	private String endPointURL; //official external public cpath2 web service url
 	private String name;
 
-	public static enum Direction
+	public enum Direction
     {
 		UPSTREAM, DOWNSTREAM, BOTHSTREAM, UNDIRECTED;
     }
@@ -192,34 +192,6 @@ public class CPathClient
         return endPointURL;
     }
     
-    
-    /**
-     * Actual cPath2 Web Service URL that is 
-     * resolved from the {@link #endPointURL} by
-     * following HTTP (302, 301) redirects.
-     * 
-     * @return the resolved cpath2 end point URL
-	 * @deprecated actual url is the same (it won't try to resolve through 30x redirects anymore...)
-     */
-    public String getActualEndPointURL() {
-        return endPointURL;
-    }
-
-    
-    /**
-     * Sets the web service URL and then
-     * finds actual resource location (after HTTP redirects)
-     * for sending future HTTP requests.
-     * 
-     * @see #getEndPointURL()
-     * @see #getActualEndPointURL()
-     * @param url a cPath2 web service URL
-	 * @deprecated - will be made private or removed soon; please use #newInstance.
-     */
-    public void setEndPointUrlAndRedirect(final String url) {
-        this.endPointURL = url;
-    }
-
 	/**
 	 * Creates a new full-text search query object
 	 * (e.g., call as cli.createSearchQuery().queryString("BRCA*")
