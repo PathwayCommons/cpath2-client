@@ -42,7 +42,7 @@ in a Maven project, add to the pom.xml the following:
 * [tests](https://github.com/PathwayCommons/cpath2-client/blob/master/src/test/java/cpath/client/CPathClientIT.java) as an example;
   
 If you want to use an all-in-one (with dependencies) JAR in your Java/JPype project, get the latest 
-cpath2-client-*-fat-jar.jar ([from here](https://oss.sonatype.org/content/groups/public/pathwaycommons/cpath/cpath2-client/)).
+cpath2-client-*-fat-jar.jar ([from here](https://oss.sonatype.org/content/groups/public/pathwaycommons/cpath2-client/)).
 
 ## ToDo: 
 * Implement cPath2 v14 API v2 (coming soon) methods (only HTTP POST and JSON request body are used in the v2 API)
